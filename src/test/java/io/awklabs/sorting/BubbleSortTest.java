@@ -19,7 +19,7 @@ public class BubbleSortTest extends SortingAlgorithmTestHarness {
     public void testintSort() {
 
         int[] array = {5, 6, 7, 1, 2, 8, 3, 10, 4, 9};
-        int[] expected = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] expected = {5, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         bubbleSort.sort(array);
         assertArrayEquals(expected, array);
 
