@@ -2,15 +2,15 @@ package io.awklabs.sorting;
 
 public class SortingAlgorithmFactory {
 
-	private SortingAlgorithmFactory() {
+    private SortingAlgorithmFactory() {
 
-	}
+    }
 
-	public static SortingAlgorithmFactory getInstance() {
-		return new SortingAlgorithmFactory();
-	}
+    public static SortingAlgorithmFactory getInstance() {
+        return new SortingAlgorithmFactory();
+    }
 
-	public <T> BubbleSort<T> getBubbleSort() {
-		return new BubbleSort<T>();
-	}
+    public <T> BubbleSort<T> getBubbleSort() {
+        return new BubbleSort<>();
+    }
 }

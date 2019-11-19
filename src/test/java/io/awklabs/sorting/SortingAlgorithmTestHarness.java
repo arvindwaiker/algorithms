@@ -4,10 +4,10 @@ import org.junit.Before;
 
 public class SortingAlgorithmTestHarness {
 
-	SortingAlgorithmFactory factory;
+    SortingAlgorithmFactory factory;
 
-	@Before
-	public void before() {
-		factory = SortingAlgorithmFactory.getInstance();
-	}
+    @Before
+    public void before() {
+        factory = SortingAlgorithmFactory.getInstance();
+    }
 }
