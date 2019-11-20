@@ -26,9 +26,9 @@ public abstract class SortingAlgorithmTestHarness {
 
     @Test
     public void testStringSort() {
-        String[] strings = {"Rachel","Monica","Ross","Chandler","Joey","Phoebe"};
-        String[] expected = {"Chandler","Joey","Monica","Phoebe","Rachel","Ross"};
+        String[] strings = {"Rachel", "Monica", "Ross", "Chandler", "Joey", "Phoebe"};
+        String[] expected = {"Chandler", "Joey", "Monica", "Phoebe", "Rachel", "Ross"};
         sort.sort(strings, String::compareTo);
-        assertArrayEquals(expected,strings);
+        assertArrayEquals(expected, strings);
     }
 }
