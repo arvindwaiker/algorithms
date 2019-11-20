@@ -1,5 +1,7 @@
 package io.awklabs.sorting;
 
+import io.awklabs.sorting.bubblesort.BubbleSort;
+
 public class SortingAlgorithmFactory {
 
     private SortingAlgorithmFactory() {

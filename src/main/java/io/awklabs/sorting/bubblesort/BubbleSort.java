@@ -1,4 +1,6 @@
-package io.awklabs.sorting;
+package io.awklabs.sorting.bubblesort;
+
+import io.awklabs.sorting.Sort;
 
 import java.util.Comparator;
 
