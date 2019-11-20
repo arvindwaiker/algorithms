@@ -9,7 +9,7 @@ public class CountingSort<T> implements Sort<T> {
     /**
      * Counting sort algorithm implementation. Supports 0-127
      *
-     * @param array
+     * @param array The input array to be sorted
      */
     @Override
     public void sort(int[] array) {
@@ -17,11 +17,11 @@ public class CountingSort<T> implements Sort<T> {
 
         int[] countingArray = new int[128];
 
-        for (int i = 0; i < n; i++) {
-            if (array[i] > 127) {
+        for (int element : array) {
+            if (element > 127) {
                 throw new RuntimeException("Counting support only supported for range of 0 - 127. Not Supported yet!");
             }
-            countingArray[array[i]]++;
+            countingArray[element]++;
         }
 
         for (int i = 1; i < countingArray.length; i++) {
@@ -29,14 +29,12 @@ public class CountingSort<T> implements Sort<T> {
         }
 
         int[] sortedArray = new int[n];
-        for (int i = 0; i < n; i++) {
-            int index = countingArray[array[i]]--;
-            sortedArray[index - 1] = array[i];
+        for (int element : array) {
+            int index = countingArray[element]--;
+            sortedArray[index - 1] = element;
         }
 
-        for (int i = 0; i < n; i++) {
-            array[i] = sortedArray[i];
-        }
+        System.arraycopy(sortedArray, 0, array, 0, n);
 
     }
 
