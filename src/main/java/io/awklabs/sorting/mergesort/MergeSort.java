@@ -4,6 +4,7 @@ import io.awklabs.sorting.Sort;
 
 import java.util.Comparator;
 
+@SuppressWarnings("unchecked")
 public class MergeSort<T> implements Sort<T> {
 
     @Override
