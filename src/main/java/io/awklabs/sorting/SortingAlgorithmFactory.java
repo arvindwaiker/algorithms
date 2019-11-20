@@ -1,6 +1,7 @@
 package io.awklabs.sorting;
 
 import io.awklabs.sorting.bubblesort.BubbleSort;
+import io.awklabs.sorting.countingsort.CountingSort;
 import io.awklabs.sorting.insertionsort.InsertionSort;
 import io.awklabs.sorting.selectionsort.SelectionSort;
 
@@ -24,5 +25,9 @@ public class SortingAlgorithmFactory {
 
     public <T> SelectionSort<T> getSelectionSort() {
         return new SelectionSort<>();
+    }
+
+    public <T> CountingSort<T> getCountingSort() {
+        return new CountingSort<>();
     }
 }
