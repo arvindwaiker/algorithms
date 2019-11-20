@@ -1,6 +1,7 @@
 package io.awklabs.sorting;
 
 import io.awklabs.sorting.bubblesort.BubbleSort;
+import io.awklabs.sorting.insertionsort.InsertionSort;
 
 public class SortingAlgorithmFactory {
 
@@ -14,5 +15,9 @@ public class SortingAlgorithmFactory {
 
     public <T> BubbleSort<T> getBubbleSort() {
         return new BubbleSort<>();
+    }
+
+    public <T> InsertionSort<T> getInsertionSort() {
+        return new InsertionSort<>();
     }
 }
