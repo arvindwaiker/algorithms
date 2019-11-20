@@ -2,8 +2,6 @@ package io.awklabs.sorting.mergesort;
 
 import io.awklabs.sorting.SortingAlgorithmTestHarness;
 
-import static org.junit.Assert.*;
-
 public class MergeSortTest extends SortingAlgorithmTestHarness {
 
     @Override
