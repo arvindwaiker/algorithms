@@ -1,8 +1,8 @@
 package io.awklabs.sorting.mergesort;
 
-import io.awklabs.sorting.SortingAlgorithmTestHarness;
+import io.awklabs.sorting.SortingAlgorithmTestBase;
 
-public class MergeSortTest extends SortingAlgorithmTestHarness {
+public class MergeSortTest extends SortingAlgorithmTestBase {
 
     @Override
     public void before() {

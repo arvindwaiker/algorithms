@@ -1,9 +1,9 @@
 package io.awklabs.sorting.bubblesort;
 
-import io.awklabs.sorting.SortingAlgorithmTestHarness;
+import io.awklabs.sorting.SortingAlgorithmTestBase;
 import org.junit.Before;
 
-public class BubbleSortTest extends SortingAlgorithmTestHarness {
+public class BubbleSortTest extends SortingAlgorithmTestBase {
 
     @Before
     public void before() {

@@ -1,11 +1,11 @@
 package io.awklabs.sorting.countingsort;
 
-import io.awklabs.sorting.SortingAlgorithmTestHarness;
+import io.awklabs.sorting.SortingAlgorithmTestBase;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
 
-public class CountingSortTest extends SortingAlgorithmTestHarness {
+public class CountingSortTest extends SortingAlgorithmTestBase {
 
     @Override
     public void before() {

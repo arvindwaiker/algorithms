@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
 
-public abstract class SortingAlgorithmTestHarness {
+public abstract class SortingAlgorithmTestBase {
 
     protected SortingAlgorithmFactory factory;
 

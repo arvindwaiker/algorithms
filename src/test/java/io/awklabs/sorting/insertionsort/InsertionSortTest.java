@@ -1,8 +1,8 @@
 package io.awklabs.sorting.insertionsort;
 
-import io.awklabs.sorting.SortingAlgorithmTestHarness;
+import io.awklabs.sorting.SortingAlgorithmTestBase;
 
-public class InsertionSortTest extends SortingAlgorithmTestHarness {
+public class InsertionSortTest extends SortingAlgorithmTestBase {
 
     @Override
     public void before() {
