@@ -4,6 +4,7 @@ import io.awklabs.sorting.bubblesort.BubbleSort;
 import io.awklabs.sorting.countingsort.CountingSort;
 import io.awklabs.sorting.insertionsort.InsertionSort;
 import io.awklabs.sorting.mergesort.MergeSort;
+import io.awklabs.sorting.quicksort.QuickSort;
 import io.awklabs.sorting.selectionsort.SelectionSort;
 
 public class SortingAlgorithmFactory {
@@ -34,5 +35,9 @@ public class SortingAlgorithmFactory {
 
     public <T> MergeSort<T> getMergeSort() {
         return new MergeSort<>();
+    }
+
+    public <T> QuickSort<T> getQuickSort() {
+        return new QuickSort<>();
     }
 }
