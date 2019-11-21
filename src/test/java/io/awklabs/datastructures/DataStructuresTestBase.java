@@ -1,0 +1,13 @@
+package io.awklabs.datastructures;
+
+import org.junit.Before;
+
+public abstract class DataStructuresTestBase {
+
+    protected Integer[] data;
+
+    @Before
+    public void before() {
+        data = new Integer[]{5, 6, 7, 1, 2, 8, 3, 10, 4, 9};
+    }
+}
