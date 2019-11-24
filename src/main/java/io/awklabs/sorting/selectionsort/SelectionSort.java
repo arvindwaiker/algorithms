@@ -31,7 +31,7 @@ public class SelectionSort<T> implements Sort<T> {
         for (int i = 0; i < n - 1; i++) {
             int selectionIndex = i;
             for (int j = i + 1; j < n; j++) {
-                if (c.compare(array[selectionIndex], array[j]) > 1) {
+                if (c.compare(array[selectionIndex], array[j]) > 0) {
                     selectionIndex = j;
                 }
             }

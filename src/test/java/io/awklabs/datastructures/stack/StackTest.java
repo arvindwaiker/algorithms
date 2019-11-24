@@ -5,12 +5,12 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class StackTest extends DataStructuresTestBase {
 
     @Rule
-    public ExpectedException expected = ExpectedException.none();
+    private final ExpectedException expected = ExpectedException.none();
 
     private Stack<Integer> integerStack;
 
@@ -22,7 +22,7 @@ public class StackTest extends DataStructuresTestBase {
 
     @Test
     public void testPush() {
-        for (Integer element: data) {
+        for (Integer element : data) {
             integerStack.push(element);
         }
         assertEquals(10, integerStack.size());
@@ -63,7 +63,7 @@ public class StackTest extends DataStructuresTestBase {
 
     @Test
     public void testStackOverflow() {
-        for (Integer element: data) {
+        for (Integer element : data) {
             integerStack.push(element);
         }
         expected.expect(RuntimeException.class);

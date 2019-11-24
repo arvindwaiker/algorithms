@@ -13,7 +13,7 @@ public class QuickSort<T> implements Sort<T> {
     }
 
     private void quickSort(int[] array, int low, int high) {
-        if(low < high) {
+        if (low < high) {
 
             int pivotIndex = partition(array, low, high);
 
@@ -28,7 +28,7 @@ public class QuickSort<T> implements Sort<T> {
         int i = low - 1;
 
         for (int j = low; j < high; j++) {
-            if(array[j] < pivot) {
+            if (array[j] < pivot) {
                 i++;
                 int temp = array[i];
                 array[i] = array[j];
@@ -48,7 +48,7 @@ public class QuickSort<T> implements Sort<T> {
     }
 
     private void quickSort(T[] array, int low, int high, Comparator<? super T> c) {
-        if(low < high) {
+        if (low < high) {
             int pivotIndex = partition(array, low, high, c);
 
             quickSort(array, low, pivotIndex - 1, c);
@@ -63,7 +63,7 @@ public class QuickSort<T> implements Sort<T> {
         int i = low - 1;
 
         for (int j = low; j < high; j++) {
-            if(c.compare(array[j],pivot) < 0) {
+            if (c.compare(array[j], pivot) < 0) {
                 i++;
                 T temp = array[i];
                 array[i] = array[j];

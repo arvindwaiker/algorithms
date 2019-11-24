@@ -12,10 +12,10 @@ public class BinarySearch<T> implements Search<T> {
     }
 
     private int binarySearch(int[] array, int key, int low, int high) {
-        if(low <= high) {
+        if (low <= high) {
             int mid = (low + high) / 2;
 
-            if(array[mid] == key) {
+            if (array[mid] == key) {
                 return mid;
             } else if (array[mid] > key) {
                 return binarySearch(array, key, low, mid - 1);
@@ -32,13 +32,13 @@ public class BinarySearch<T> implements Search<T> {
         return binarySearch(array, key, 0, array.length - 1, c);
     }
 
-    private int binarySearch(T[] array, T key, int low, int high,Comparator<? super T> c) {
-        if(low <= high) {
+    private int binarySearch(T[] array, T key, int low, int high, Comparator<? super T> c) {
+        if (low <= high) {
             int mid = (low + high) / 2;
 
-            if(array[mid].equals(key)) {
+            if (array[mid].equals(key)) {
                 return mid;
-            } else if (c.compare(array[mid],key) > 1) {
+            } else if (c.compare(array[mid], key) > 0) {
                 return binarySearch(array, key, low, mid - 1, c);
             } else {
                 return binarySearch(array, key, mid + 1, high, c);
