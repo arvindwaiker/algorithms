@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 public class StackTest extends DataStructuresTestBase {
 
     @Rule
-    private final ExpectedException expected = ExpectedException.none();
+    public final ExpectedException expected = ExpectedException.none();
 
     private Stack<Integer> integerStack;
 
