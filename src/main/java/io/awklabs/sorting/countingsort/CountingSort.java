@@ -13,7 +13,13 @@ public class CountingSort<T> implements Sort<T> {
      */
     @Override
     public void sort(int[] array) {
+        assert array != null;
+
         int n = array.length;
+
+        if (n <= 0) {
+            return;
+        }
 
         int[] countingArray = new int[128];
 

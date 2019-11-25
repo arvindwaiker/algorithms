@@ -34,4 +34,22 @@ public class CountingSortTest extends SortingAlgorithmTestBase {
     public void testStringSort() {
         super.testStringSort();
     }
+
+    @Override
+    @Test(expected = RuntimeException.class)
+    public void testEmptyStringArray() {
+        super.testEmptyStringArray();
+    }
+
+    @Override
+    @Test(expected = RuntimeException.class)
+    public void testNullComparator() {
+        super.testNullComparator();
+    }
+
+    @Override
+    @Test(expected = RuntimeException.class)
+    public void testNullArray() {
+        super.testNullArray();
+    }
 }

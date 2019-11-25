@@ -8,7 +8,14 @@ public class SelectionSort<T> implements Sort<T> {
 
     @Override
     public void sort(int[] array) {
+
+        assert array != null;
+
         int n = array.length;
+
+        if (n <= 0) {
+            return;
+        }
 
         for (int i = 0; i < n - 1; i++) {
             int selectionIndex = i;
@@ -26,7 +33,13 @@ public class SelectionSort<T> implements Sort<T> {
     @Override
     public void sort(T[] array, Comparator<? super T> c) {
 
+        assert array != null && c != null;
+
         int n = array.length;
+
+        if (n <= 0) {
+            return;
+        }
 
         for (int i = 0; i < n - 1; i++) {
             int selectionIndex = i;

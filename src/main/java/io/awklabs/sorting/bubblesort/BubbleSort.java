@@ -8,7 +8,13 @@ public class BubbleSort<T> implements Sort<T> {
 
     @Override
     public void sort(int[] array) {
+        assert array != null;
+
         int n = array.length;
+
+        if (n <= 0) {
+            return;
+        }
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
                 if (array[j] > array[j + 1]) {
@@ -22,7 +28,14 @@ public class BubbleSort<T> implements Sort<T> {
 
     @Override
     public void sort(T[] array, Comparator<? super T> c) {
+        assert array != null && c != null;
+
         int n = array.length;
+
+        if (n <= 0) {
+            return;
+        }
+
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
                 if (c.compare(array[j], array[j + 1]) > 0) {

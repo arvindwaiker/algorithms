@@ -1,8 +1,13 @@
 package io.awklabs.datastructures;
 
 import org.junit.Before;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 
 public abstract class DataStructuresTestBase {
+
+    @Rule
+    public final ExpectedException expected = ExpectedException.none();
 
     protected Integer[] data;
 

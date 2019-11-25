@@ -1,18 +1,13 @@
 package io.awklabs.datastructures.stack;
 
 import io.awklabs.datastructures.DataStructuresTestBase;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
 
 public class StackTest extends DataStructuresTestBase {
-
-    @Rule
-    public final ExpectedException expected = ExpectedException.none();
 
     private Stack<Integer> integerStack;
 

@@ -1,11 +1,16 @@
 package io.awklabs.sorting;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertArrayEquals;
 
 public abstract class SortingAlgorithmTestBase {
+
+    @Rule
+    public final ExpectedException expected = ExpectedException.none();
 
     protected SortingAlgorithmFactory factory;
 
@@ -30,5 +35,36 @@ public abstract class SortingAlgorithmTestBase {
         String[] expected = {"Chandler", "Joey", "Monica", "Phoebe", "Rachel", "Ross"};
         sort.sort(strings, String::compareTo);
         assertArrayEquals(expected, strings);
+    }
+
+    @Test(expected = AssertionError.class)
+    public void testNullArray() {
+        sort.sort(null, String::compareTo);
+    }
+
+    @Test(expected = AssertionError.class)
+    public void testNullIntArray() {
+        sort.sort(null);
+    }
+
+    @Test
+    public void testEmptyStringArray() {
+        String[] strings = {};
+        String[] expected = {};
+        sort.sort(strings, String::compareTo);
+        assertArrayEquals(expected, strings);
+    }
+
+    @Test
+    public void testEmptyIntArray() {
+        int[] array = {};
+        int[] expected = {};
+        sort.sort(array);
+        assertArrayEquals(expected, array);
+    }
+
+    @Test(expected = AssertionError.class)
+    public void testNullComparator() {
+        sort.sort(new String[]{}, null);
     }
 }

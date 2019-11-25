@@ -8,7 +8,14 @@ public class InsertionSort<T> implements Sort<T> {
 
     @Override
     public void sort(int[] array) {
+        assert array != null;
+
         int n = array.length;
+
+        if (n <= 0) {
+            return;
+        }
+
         for (int i = 1; i < n; i++) {
             int key = array[i];
             int j = i - 1;
@@ -23,7 +30,14 @@ public class InsertionSort<T> implements Sort<T> {
 
     @Override
     public void sort(T[] array, Comparator<? super T> c) {
+        assert array != null && c != null;
+
         int n = array.length;
+
+        if (n <= 0) {
+            return;
+        }
+
         for (int i = 1; i < n; i++) {
             T key = array[i];
             int j = i - 1;

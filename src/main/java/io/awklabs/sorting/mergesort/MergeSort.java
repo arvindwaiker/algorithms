@@ -9,6 +9,12 @@ public class MergeSort<T> implements Sort<T> {
 
     @Override
     public void sort(int[] array) {
+        assert array != null;
+
+        if (array.length <= 0) {
+            return;
+        }
+
         mergeSort(array, 0, array.length - 1);
     }
 
@@ -66,6 +72,12 @@ public class MergeSort<T> implements Sort<T> {
 
     @Override
     public void sort(T[] array, Comparator<? super T> c) {
+        assert array != null && c != null;
+
+        if (array.length <= 0) {
+            return;
+        }
+
         mergeSort(array, c, 0, array.length - 1);
     }
 
