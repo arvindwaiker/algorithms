@@ -17,7 +17,7 @@ public class CountingSort<T> implements Sort<T> {
 
         int n = array.length;
 
-        if (n <= 0) {
+        if (n <= 1) {
             return;
         }
 

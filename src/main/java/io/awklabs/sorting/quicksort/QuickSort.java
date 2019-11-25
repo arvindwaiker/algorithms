@@ -55,7 +55,7 @@ public class QuickSort<T> implements Sort<T> {
 
         int n = array.length;
 
-        if (n <= 0) {
+        if (n <= 1) {
             return;
         }
         quickSort(array, 0, n - 1, c);

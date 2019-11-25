@@ -12,7 +12,7 @@ public class BubbleSort<T> implements Sort<T> {
 
         int n = array.length;
 
-        if (n <= 0) {
+        if (n <= 1) {
             return;
         }
         for (int i = 0; i < n - 1; i++) {
@@ -32,7 +32,7 @@ public class BubbleSort<T> implements Sort<T> {
 
         int n = array.length;
 
-        if (n <= 0) {
+        if (n <= 1) {
             return;
         }
 

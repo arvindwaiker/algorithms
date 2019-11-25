@@ -11,7 +11,7 @@ public class MergeSort<T> implements Sort<T> {
     public void sort(int[] array) {
         assert array != null;
 
-        if (array.length <= 0) {
+        if (array.length <= 1) {
             return;
         }
 
@@ -74,7 +74,7 @@ public class MergeSort<T> implements Sort<T> {
     public void sort(T[] array, Comparator<? super T> c) {
         assert array != null && c != null;
 
-        if (array.length <= 0) {
+        if (array.length <= 1) {
             return;
         }
 
