@@ -5,6 +5,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import java.util.stream.Stream;
+
 import static org.junit.Assert.assertEquals;
 
 public class StackTest extends DataStructuresTestBase {
@@ -22,9 +24,7 @@ public class StackTest extends DataStructuresTestBase {
 
     @Test
     public void testPush() {
-        for (Integer element : data) {
-            integerStack.push(element);
-        }
+        Stream.of(data).forEach(integerStack::push);
         assertEquals(10, integerStack.size());
         assertEquals(Integer.valueOf(9), integerStack.peek());
     }
@@ -63,9 +63,7 @@ public class StackTest extends DataStructuresTestBase {
 
     @Test
     public void testStackOverflow() {
-        for (Integer element : data) {
-            integerStack.push(element);
-        }
+        Stream.of(data).forEach(integerStack::push);
         expected.expect(RuntimeException.class);
         expected.expectMessage("Stack Overflow. Maximum size reached");
         integerStack.push(10);
