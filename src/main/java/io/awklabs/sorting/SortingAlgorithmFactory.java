@@ -6,6 +6,7 @@ import io.awklabs.sorting.heapsort.HeapSort;
 import io.awklabs.sorting.insertionsort.InsertionSort;
 import io.awklabs.sorting.mergesort.MergeSort;
 import io.awklabs.sorting.quicksort.QuickSort;
+import io.awklabs.sorting.radixsort.RadixSort;
 import io.awklabs.sorting.selectionsort.SelectionSort;
 
 public class SortingAlgorithmFactory {
@@ -44,5 +45,9 @@ public class SortingAlgorithmFactory {
 
     public <T> HeapSort<T> getHeapSort() {
         return new HeapSort<>();
+    }
+
+    public <T> RadixSort<T> getRadixSort() {
+        return new RadixSort<>();
     }
 }

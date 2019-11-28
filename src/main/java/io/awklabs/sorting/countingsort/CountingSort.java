@@ -35,9 +35,9 @@ public class CountingSort<T> implements Sort<T> {
         }
 
         int[] sortedArray = new int[n];
-        for (int element : array) {
-            int index = countingArray[element]--;
-            sortedArray[index - 1] = element;
+        for (int i = n - 1; i >= 0; i--) {
+            int index = countingArray[array[i]]--;
+            sortedArray[index - 1] = array[i];
         }
 
         System.arraycopy(sortedArray, 0, array, 0, n);
