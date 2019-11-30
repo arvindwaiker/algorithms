@@ -19,7 +19,7 @@ public class Stack<T> {
         if (initialCapacity > 256) {
             maximumSize = 256;
         }
-        elements = (T[]) new Object[initialCapacity];
+        elements = (T[]) new Object[maximumSize];
         elementCount = 0;
     }
 
