@@ -1,6 +1,7 @@
 package io.awklabs.searching;
 
 import io.awklabs.searching.binarysearch.BinarySearch;
+import io.awklabs.searching.jumpsearch.JumpSearch;
 
 public class SearchAlgorithmFactory {
 
@@ -14,5 +15,9 @@ public class SearchAlgorithmFactory {
 
     public <T> BinarySearch<T> getBinarySearch() {
         return new BinarySearch<>();
+    }
+
+    public <T> JumpSearch<T> getJumpSearch() {
+        return new JumpSearch<>();
     }
 }

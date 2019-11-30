@@ -8,6 +8,8 @@ public class BinarySearch<T> implements Search<T> {
 
     @Override
     public int search(int[] array, int key) {
+        assert array != null;
+
         return binarySearch(array, key, 0, array.length - 1);
     }
 
@@ -29,6 +31,8 @@ public class BinarySearch<T> implements Search<T> {
 
     @Override
     public int search(T[] array, T key, Comparator<? super T> c) {
+        assert array != null && key != null && c != null;
+
         return binarySearch(array, key, 0, array.length - 1, c);
     }
 
