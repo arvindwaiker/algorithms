@@ -69,4 +69,16 @@ public class QueueTest extends DataStructuresTestBase {
         expected.expectMessage("Queue Empty");
         integerQueue.rear();
     }
+
+    @Test
+    public void testDefaultSize() {
+        Queue<Object> queue = new Queue<>();
+        assertEquals(256, queue.capacity());
+    }
+
+    @Test
+    public void testMaxSize() {
+        Queue<Object> queue = new Queue<>(257);
+        assertEquals(256, queue.capacity());
+    }
 }
