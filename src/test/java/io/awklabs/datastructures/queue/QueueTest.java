@@ -43,30 +43,30 @@ public class QueueTest extends DataStructuresTestBase {
 
     @Test
     public void testEmptyQueueDeQueue() {
-        expected.expect(RuntimeException.class);
-        expected.expectMessage("Queue Empty");
+        expectedException.expect(RuntimeException.class);
+        expectedException.expectMessage("Queue Empty");
         integerQueue.deQueue();
     }
 
     @Test
     public void testEnQueueWhenQueueFull() {
-        expected.expect(RuntimeException.class);
-        expected.expectMessage("Queue full, Maximum size reached");
+        expectedException.expect(RuntimeException.class);
+        expectedException.expectMessage("Queue full, Maximum size reached");
         Stream.of(data).forEach(integerQueue::enQueue);
         integerQueue.enQueue(30);
     }
 
     @Test
     public void testEmptyQueueFront() {
-        expected.expect(RuntimeException.class);
-        expected.expectMessage("Queue Empty");
+        expectedException.expect(RuntimeException.class);
+        expectedException.expectMessage("Queue Empty");
         integerQueue.front();
     }
 
     @Test
     public void testEmptyQueueRear() {
-        expected.expect(RuntimeException.class);
-        expected.expectMessage("Queue Empty");
+        expectedException.expect(RuntimeException.class);
+        expectedException.expectMessage("Queue Empty");
         integerQueue.rear();
     }
 

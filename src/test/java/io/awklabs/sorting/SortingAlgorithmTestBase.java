@@ -10,7 +10,7 @@ import static org.junit.Assert.assertArrayEquals;
 public abstract class SortingAlgorithmTestBase {
 
     @Rule
-    public final ExpectedException expected = ExpectedException.none();
+    public final ExpectedException expectedException = ExpectedException.none();
 
     protected SortingAlgorithmFactory factory;
 

@@ -44,23 +44,23 @@ public class StackTest extends DataStructuresTestBase {
 
     @Test
     public void testEmptyStackWhenPop() {
-        expected.expect(RuntimeException.class);
-        expected.expectMessage("Stack Empty");
+        expectedException.expect(RuntimeException.class);
+        expectedException.expectMessage("Stack Empty");
         integerStack.pop();
     }
 
     @Test
     public void testEmptyStackWhenPeek() {
-        expected.expect(RuntimeException.class);
-        expected.expectMessage("Stack Empty");
+        expectedException.expect(RuntimeException.class);
+        expectedException.expectMessage("Stack Empty");
         integerStack.peek();
     }
 
     @Test
     public void testStackOverflow() {
         Stream.of(data).forEach(integerStack::push);
-        expected.expect(RuntimeException.class);
-        expected.expectMessage("Stack Overflow. Maximum size reached");
+        expectedException.expect(RuntimeException.class);
+        expectedException.expectMessage("Stack Overflow. Maximum size reached");
         integerStack.push(10);
     }
 

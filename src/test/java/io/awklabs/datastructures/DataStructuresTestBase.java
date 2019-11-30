@@ -7,7 +7,7 @@ import org.junit.rules.ExpectedException;
 public abstract class DataStructuresTestBase {
 
     @Rule
-    public final ExpectedException expected = ExpectedException.none();
+    public final ExpectedException expectedException = ExpectedException.none();
 
     protected Integer[] data;
 
