@@ -1,4 +1,4 @@
-package io.awklabs.datastructures.binarytree;
+package io.awklabs.datastructures.tree;
 
 import io.awklabs.datastructures.queue.Queue;
 

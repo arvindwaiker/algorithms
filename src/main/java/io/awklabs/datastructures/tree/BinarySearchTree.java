@@ -1,4 +1,4 @@
-package io.awklabs.datastructures.binarytree;
+package io.awklabs.datastructures.tree;
 
 import java.util.Comparator;
 import java.util.List;
