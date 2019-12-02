@@ -87,6 +87,28 @@ public class BinarySearchTree<T> {
         inOrder(node.right, resultArray);
     }
 
+    public void preOrder(Node<T> node, List<T> resultArray) {
+
+        if (node == null) {
+            return;
+        }
+
+        resultArray.add(node.element);
+        preOrder(node.left, resultArray);
+        preOrder(node.right, resultArray);
+    }
+
+    public void postOrder(Node<T> node, List<T> resultArray) {
+
+        if (node == null) {
+            return;
+        }
+
+        postOrder(node.left, resultArray);
+        postOrder(node.right, resultArray);
+        resultArray.add(node.element);
+    }
+
     public Node<T> balance(Node<T> node) {
 
         if (node == null || (node.left == null && node.right == null)) {

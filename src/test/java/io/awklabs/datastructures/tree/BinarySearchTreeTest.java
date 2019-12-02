@@ -4,6 +4,7 @@ import io.awklabs.datastructures.DataStructuresTestBase;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -99,5 +100,44 @@ public class BinarySearchTreeTest extends DataStructuresTestBase {
         root = binarySearchTree.balance(root);
         assertEquals(1, binarySearchTree.height(root));
         assertEquals(Integer.valueOf(10), root.element);
+    }
+
+    @Test
+    public void testInOrder() {
+        Node<Integer> root = null;
+        for (int element : data) {
+            root = binarySearchTree.insert(root, element);
+        }
+        root = binarySearchTree.balance(root);
+        List<Integer> expected = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        List<Integer> result = new ArrayList<>();
+        binarySearchTree.inOrder(root, result);
+        assertArrayEquals(expected.toArray(), result.toArray());
+    }
+
+    @Test
+    public void testPreOrder() {
+        Node<Integer> root = null;
+        for (int element : data) {
+            root = binarySearchTree.insert(root, element);
+        }
+        root = binarySearchTree.balance(root);
+        List<Integer> expected = Arrays.asList(5, 2, 1, 3, 4, 8, 6, 7, 9, 10);
+        List<Integer> result = new ArrayList<>();
+        binarySearchTree.preOrder(root, result);
+        assertArrayEquals(expected.toArray(), result.toArray());
+    }
+
+    @Test
+    public void testPostOrder() {
+        Node<Integer> root = null;
+        for (int element : data) {
+            root = binarySearchTree.insert(root, element);
+        }
+        root = binarySearchTree.balance(root);
+        List<Integer> expected = Arrays.asList(1, 4, 3, 2, 7, 6, 10, 9, 8, 5);
+        List<Integer> result = new ArrayList<>();
+        binarySearchTree.postOrder(root, result);
+        assertArrayEquals(expected.toArray(), result.toArray());
     }
 }
