@@ -25,35 +25,6 @@ public class Heap<T> {
         this.comparator = c;
     }
 
-    public void heapify(int i) {
-
-        int largest = i;
-        int left = (2 * i) + 1;
-        int right = (2 * i) + 2;
-
-        if (left < elementsCount
-                && ((!minHeap && comparator.compare(elements[left], elements[largest]) > 0)
-                || (minHeap && comparator.compare(elements[left], elements[largest]) < 0))
-        ) {
-            largest = left;
-        }
-
-        if (right < elementsCount
-                && ((!minHeap && comparator.compare(elements[right], elements[largest]) > 0)
-                || (minHeap && comparator.compare(elements[right], elements[largest]) < 0))
-        ) {
-            largest = right;
-        }
-
-        if (largest != i) {
-            T temp = elements[largest];
-            elements[largest] = elements[i];
-            elements[i] = temp;
-
-            heapify(largest);
-        }
-    }
-
     public void insertKey(T element) {
         if (elementsCount == maximumSize) {
             throw new RuntimeException("Heap Full");
@@ -72,6 +43,32 @@ public class Heap<T> {
         }
     }
 
+    public T extractMinimum() {
+        T result = elements[0];
+
+        elements[0] = elements[elementsCount - 1];
+        elements[elementsCount - 1] = null;
+        elementsCount--;
+
+        int i = 0;
+        while (i < (elementsCount - 1) / 2) {
+            int l = (2 * i) + 1;
+            int r = l + 1;
+            int smallest = l;
+            if (comparator.compare(elements[l], elements[r]) > 0) {
+                smallest = r;
+            }
+
+            T temp = elements[i];
+            elements[i] = elements[smallest];
+            elements[smallest] = temp;
+
+            i = smallest;
+        }
+
+        return result;
+    }
+
     public T[] getElements() {
         T[] copy = (T[]) new Object[elementsCount];
         System.arraycopy(elements, 0, copy, 0, elementsCount);
@@ -80,5 +77,9 @@ public class Heap<T> {
 
     private int parent(int i) {
         return (i - 1) / 2;
+    }
+
+    public int capacity() {
+        return maximumSize;
     }
 }
