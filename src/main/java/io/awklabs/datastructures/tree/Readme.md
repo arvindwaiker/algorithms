@@ -1,4 +1,4 @@
-Binary Tree
+Trees
 
 Each node can be linked to 2 other nodes.
 
@@ -16,3 +16,10 @@ Types of Binary Trees
    2. The right subtree of a node contains only nodes with keys greater than the node’s key.
    3. The left and right subtree each must also be a binary search tree.
    4. There must be no duplicate nodes.
+   
+   
+Heaps
+
+1. Max Heap : Root is the highest value. Child have the lowest value.
+2. Min Heap : Root is the lowest value. Child have the highest value.
+
