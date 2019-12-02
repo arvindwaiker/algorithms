@@ -43,7 +43,7 @@ public class Heap<T> {
         }
     }
 
-    public T extractMinimum() {
+    public T extractMinimumOrMaximum() {
         T result = elements[0];
 
         elements[0] = elements[elementsCount - 1];
@@ -55,7 +55,7 @@ public class Heap<T> {
             int l = (2 * i) + 1;
             int r = l + 1;
             int smallest = l;
-            if (comparator.compare(elements[l], elements[r]) > 0) {
+            if ((minHeap && comparator.compare(elements[l], elements[r]) > 0) || (!minHeap && comparator.compare(elements[l], elements[r]) < 0)) {
                 smallest = r;
             }
 
