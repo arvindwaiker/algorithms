@@ -92,4 +92,12 @@ public class BinarySearchTreeTest extends DataStructuresTestBase {
         assertArrayEquals(expected, result.toArray());
         assertEquals(4, binarySearchTree.height(root));
     }
+
+    @Test
+    public void testBalanceSingleNode() {
+        Node<Integer> root = new Node<>(10);
+        root = binarySearchTree.balance(root);
+        assertEquals(1, binarySearchTree.height(root));
+        assertEquals(Integer.valueOf(10), root.element);
+    }
 }
