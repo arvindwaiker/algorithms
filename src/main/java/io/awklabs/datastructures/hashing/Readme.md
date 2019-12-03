@@ -4,7 +4,7 @@ Hash Function : Function that converts a object into a hash
 
 Hash Table : Table that stores the pointers to the actual object.
 
-Collison Avoidance :
+Collision Avoidance :
 1. Chaining - Linked List for the elements with the same Has
 2. Open Addressing 
     1. Linear Probing : Same hash elements are stored in the next available slot.
