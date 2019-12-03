@@ -6,7 +6,7 @@ import java.util.List;
 
 public class BinarySearchTree<T> {
 
-    private Comparator<? super T> comparator;
+    protected Comparator<? super T> comparator;
 
     public BinarySearchTree(Comparator<? super T> comparator) {
         this.comparator = comparator;
@@ -59,7 +59,7 @@ public class BinarySearchTree<T> {
             }
 
             //Do not actually delete the node. Instead replace it with min value. Delete the min value node in the right sub tree.
-            root.element = (T) minValue(root.right);
+            root.element = minValue(root.right);
             root.right = delete(root.right, root.element);
         }
 
@@ -68,12 +68,12 @@ public class BinarySearchTree<T> {
     }
 
     private T minValue(Node<T> root) {
-        T minv = root.element;
+        T minValue = root.element;
         while (root.left != null) {
-            minv = (T) root.left.element;
+            minValue = root.left.element;
             root = root.left;
         }
-        return minv;
+        return minValue;
     }
 
     public void inOrder(Node<T> node, List<T> resultArray) {

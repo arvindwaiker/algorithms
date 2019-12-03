@@ -3,8 +3,8 @@ package io.awklabs.datastructures.tree;
 public class Node<T> {
 
     T element;
-    Node left;
-    Node right;
+    Node<T> left;
+    Node<T> right;
 
     public Node(T element) {
         this(element, null, null);
