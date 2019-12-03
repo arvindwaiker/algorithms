@@ -63,4 +63,35 @@ public class AVLTree<T> extends BinarySearchTree<T> {
         return root;
 
     }
+
+    @Override
+    public Node<T> delete(Node<T> root, T element) {
+        root = super.delete(root, element);
+
+        if (root == null) {
+            return root;
+        }
+
+        int balance = getBalance(root);
+
+        if (balance > 1) {
+            if (getBalance(root.left) >= 0) {
+                root = rightRotate(root);
+            } else if (getBalance(root.left) < 0) {
+                root.left = leftRotate(root.left);
+                root = rightRotate(root);
+            }
+        }
+
+        if (balance < -1) {
+            if (getBalance(root.right) <= 0) {
+                root = leftRotate(root);
+            } else if (getBalance(root.right) > 0) {
+                root.right = rightRotate(root.right);
+                root = leftRotate(root);
+            }
+        }
+
+        return root;
+    }
 }

@@ -42,4 +42,111 @@ public class AVLTreeTest extends DataStructuresTestBase {
         avlTree.postOrder(root, result);
         assertEquals(expectedPostOrder, result);
     }
+
+    @Test
+    public void testDeleteOnlyOneElement() {
+        Node<Integer> root = avlTree.insert(null, 10);
+        avlTree.delete(root, 10);
+    }
+
+    @Test
+    public void testDeleteLeftRotate() {
+        Node<Integer> root = null;
+        for (int element : Arrays.asList(10, 9, 11, 12)) {
+            root = avlTree.insert(root, element);
+        }
+
+        root = avlTree.delete(root, 9);
+
+        List<Integer> expectedInOrder = Arrays.asList(10, 11, 12);
+        List<Integer> expectedPreOrder = Arrays.asList(11, 10, 12);
+        List<Integer> expectedPostOrder = Arrays.asList(10, 12, 11);
+
+        List<Integer> result = new ArrayList<>();
+        avlTree.inOrder(root, result);
+        assertEquals(expectedInOrder, result);
+        result = new ArrayList<>();
+        avlTree.preOrder(root, result);
+        assertEquals(expectedPreOrder, result);
+        result = new ArrayList<>();
+        avlTree.postOrder(root, result);
+        assertEquals(expectedPostOrder, result);
+
+    }
+
+    @Test
+    public void testDeleteRightRotate() {
+        Node<Integer> root = null;
+        for (int element : Arrays.asList(11, 10, 12, 9)) {
+            root = avlTree.insert(root, element);
+        }
+
+        root = avlTree.delete(root, 12);
+
+        List<Integer> expectedInOrder = Arrays.asList(9, 10, 11);
+        List<Integer> expectedPreOrder = Arrays.asList(10, 9, 11);
+        List<Integer> expectedPostOrder = Arrays.asList(9, 11, 10);
+
+        List<Integer> result = new ArrayList<>();
+        avlTree.inOrder(root, result);
+        assertEquals(expectedInOrder, result);
+        result = new ArrayList<>();
+        avlTree.preOrder(root, result);
+        assertEquals(expectedPreOrder, result);
+        result = new ArrayList<>();
+        avlTree.postOrder(root, result);
+        assertEquals(expectedPostOrder, result);
+
+    }
+
+    @Test
+    public void testDeleteLeftRightRotate() {
+        Node<Integer> root = null;
+        for (int element : Arrays.asList(4, 2, 8, 3)) {
+            root = avlTree.insert(root, element);
+        }
+
+        root = avlTree.delete(root, 8);
+
+        List<Integer> expectedInOrder = Arrays.asList(2, 3, 4);
+        List<Integer> expectedPreOrder = Arrays.asList(3, 2, 4);
+        List<Integer> expectedPostOrder = Arrays.asList(2, 4, 3);
+
+        List<Integer> result = new ArrayList<>();
+        avlTree.inOrder(root, result);
+        assertEquals(expectedInOrder, result);
+        result = new ArrayList<>();
+        avlTree.preOrder(root, result);
+        assertEquals(expectedPreOrder, result);
+        result = new ArrayList<>();
+        avlTree.postOrder(root, result);
+        assertEquals(expectedPostOrder, result);
+
+    }
+
+    @Test
+    public void testDeleteRightLeftRotate() {
+        Node<Integer> root = null;
+        for (int element : Arrays.asList(4, 2, 8, 6)) {
+            root = avlTree.insert(root, element);
+        }
+
+        root = avlTree.delete(root, 2);
+
+        List<Integer> expectedInOrder = Arrays.asList(4, 6, 8);
+        List<Integer> expectedPreOrder = Arrays.asList(6, 4, 8);
+        List<Integer> expectedPostOrder = Arrays.asList(4, 8, 6);
+
+        List<Integer> result = new ArrayList<>();
+        avlTree.inOrder(root, result);
+        assertEquals(expectedInOrder, result);
+        result = new ArrayList<>();
+        avlTree.preOrder(root, result);
+        assertEquals(expectedPreOrder, result);
+        result = new ArrayList<>();
+        avlTree.postOrder(root, result);
+        assertEquals(expectedPostOrder, result);
+
+    }
+
 }
