@@ -19,6 +19,7 @@ Types of Binary Trees
 6. AVL Tree : Is a Binary Search Tree that is self balancing. Every insert and delete triggers a logic to rebalance itself.
     1. Left Rotate
     2. Right Rotate   
+![Image-1](https://user-images.githubusercontent.com/8198606/71015343-72ac1280-2119-11ea-9acf-264fbfc75ca4.jpg)
    
 Heaps
 
