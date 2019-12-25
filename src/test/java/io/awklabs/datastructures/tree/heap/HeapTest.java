@@ -1,4 +1,4 @@
-package io.awklabs.datastructures.tree;
+package io.awklabs.datastructures.tree.heap;
 
 import io.awklabs.datastructures.DataStructuresTestBase;
 import org.junit.Test;
@@ -10,8 +10,8 @@ import static org.junit.Assert.assertEquals;
 
 public class HeapTest extends DataStructuresTestBase {
 
-    Heap<Integer> minHeap = new Heap<>(10, true, Integer::compareTo);
-    Heap<Integer> maxHeap = new Heap<>(10, false, Integer::compareTo);
+    Heap<Integer> minHeap = new MinHeap<>(10, Integer::compareTo);
+    Heap<Integer> maxHeap = new MaxHeap<>(10, Integer::compareTo);
 
     @Test
     public void testMinHeap() {
@@ -29,14 +29,14 @@ public class HeapTest extends DataStructuresTestBase {
 
     @Test
     public void testMaximumSize() {
-        Heap<Integer> heap = new Heap<>(257, true, Integer::compareTo);
+        Heap<Integer> heap = new MaxHeap<>(257, Integer::compareTo);
         assertEquals(256, heap.capacity());
     }
 
     @Test
     public void testExtractMin() {
         Stream.of(data).forEach(minHeap::insertKey);
-        assertEquals(Integer.valueOf(1), minHeap.extractMinimumOrMaximum());
+        assertEquals(Integer.valueOf(1), minHeap.extractTopOfHeap());
         Integer[] result = {2, 4, 3, 6, 5, 8, 7, 10, 9};
         assertArrayEquals(result, minHeap.getElements());
     }
@@ -44,7 +44,7 @@ public class HeapTest extends DataStructuresTestBase {
     @Test
     public void testExtractMax() {
         Stream.of(data).forEach(maxHeap::insertKey);
-        assertEquals(Integer.valueOf(10), maxHeap.extractMinimumOrMaximum());
+        assertEquals(Integer.valueOf(10), maxHeap.extractTopOfHeap());
         Integer[] result = {9, 8, 7, 5, 2, 6, 3, 1, 4};
         assertArrayEquals(result, maxHeap.getElements());
     }

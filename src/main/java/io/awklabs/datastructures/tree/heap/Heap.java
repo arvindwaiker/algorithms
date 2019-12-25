@@ -1,8 +1,8 @@
-package io.awklabs.datastructures.tree;
+package io.awklabs.datastructures.tree.heap;
 
 import java.util.Comparator;
 
-public class Heap<T> {
+public abstract class Heap<T> {
 
     private T[] elements;
 
@@ -10,20 +10,19 @@ public class Heap<T> {
 
     private int elementsCount;
 
-    private boolean minHeap;
+    protected Comparator<? super T> comparator;
 
-    private Comparator<? super T> comparator;
-
-    public Heap(int initialCapacity, boolean minHeap, Comparator<? super T> c) {
+    public Heap(int initialCapacity, Comparator<? super T> c) {
         maximumSize = initialCapacity;
         if (maximumSize > 256) {
             maximumSize = 256;
         }
         elements = (T[]) new Object[maximumSize];
         elementsCount = 0;
-        this.minHeap = minHeap;
         this.comparator = c;
     }
+
+    protected abstract boolean compare(T o1, T o2);
 
     public void insertKey(T element) {
         if (elementsCount == maximumSize) {
@@ -33,9 +32,7 @@ public class Heap<T> {
         int i = elementsCount++;
         elements[i] = element;
 
-        while (i != 0 &&
-                ((minHeap && comparator.compare(elements[parent(i)], elements[i]) > 0) ||
-                        (!minHeap && comparator.compare(elements[parent(i)], elements[i]) < 0))) {
+        while (i != 0 && compare(elements[parent(i)], elements[i])) {
             T temp = elements[i];
             elements[i] = elements[parent(i)];
             elements[parent(i)] = temp;
@@ -43,7 +40,7 @@ public class Heap<T> {
         }
     }
 
-    public T extractMinimumOrMaximum() {
+    public T extractTopOfHeap() {
         T result = elements[0];
 
         elements[0] = elements[elementsCount - 1];
@@ -55,7 +52,7 @@ public class Heap<T> {
             int l = (2 * i) + 1;
             int r = l + 1;
             int smallest = l;
-            if ((minHeap && comparator.compare(elements[l], elements[r]) > 0) || (!minHeap && comparator.compare(elements[l], elements[r]) < 0)) {
+            if (compare(elements[l], elements[r])) {
                 smallest = r;
             }
 
