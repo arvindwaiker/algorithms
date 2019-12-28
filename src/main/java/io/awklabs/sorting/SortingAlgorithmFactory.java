@@ -8,6 +8,7 @@ import io.awklabs.sorting.mergesort.MergeSort;
 import io.awklabs.sorting.quicksort.QuickSort;
 import io.awklabs.sorting.radixsort.RadixSort;
 import io.awklabs.sorting.selectionsort.SelectionSort;
+import io.awklabs.sorting.shellsort.ShellSort;
 
 public class SortingAlgorithmFactory {
 
@@ -49,5 +50,9 @@ public class SortingAlgorithmFactory {
 
     public <T> RadixSort<T> getRadixSort() {
         return new RadixSort<>();
+    }
+
+    public <T> ShellSort<T> getShellSort() {
+        return new ShellSort<>();
     }
 }
