@@ -36,7 +36,7 @@ public class HeapTest extends DataStructuresTestBase {
     @Test
     public void testExtractMin() {
         Stream.of(data).forEach(minHeap::insertKey);
-        assertEquals(Integer.valueOf(1), minHeap.extractTopOfHeap());
+        assertEquals(Integer.valueOf(1), minHeap.deleteRoot());
         Integer[] result = {2, 4, 3, 6, 5, 8, 7, 10, 9};
         assertArrayEquals(result, minHeap.getElements());
     }
@@ -44,7 +44,7 @@ public class HeapTest extends DataStructuresTestBase {
     @Test
     public void testExtractMax() {
         Stream.of(data).forEach(maxHeap::insertKey);
-        assertEquals(Integer.valueOf(10), maxHeap.extractTopOfHeap());
+        assertEquals(Integer.valueOf(10), maxHeap.deleteRoot());
         Integer[] result = {9, 8, 7, 5, 2, 6, 3, 1, 4};
         assertArrayEquals(result, maxHeap.getElements());
     }

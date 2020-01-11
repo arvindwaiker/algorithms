@@ -40,7 +40,7 @@ public abstract class Heap<T> {
         }
     }
 
-    public T extractTopOfHeap() {
+    public T deleteRoot() {
         T result = elements[0];
 
         elements[0] = elements[elementsCount - 1];
