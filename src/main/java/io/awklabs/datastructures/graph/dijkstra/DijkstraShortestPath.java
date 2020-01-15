@@ -1,6 +1,6 @@
 package io.awklabs.datastructures.graph.dijkstra;
 
-public class DijkstraShortestPath {
+public class DijkstraShortestPath<T> {
 
     public int[] dijkstra(int[][] graph, int src) {
         int n = graph.length;

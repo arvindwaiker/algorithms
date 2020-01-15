@@ -9,7 +9,7 @@ public class DijkstraShortestPathTest {
     DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath();
 
     @Test
-    public void dijkstra() {
+    public void dijkstraAdjacencyMatrix() {
 
 
         int[][] graph = new int[][]{
