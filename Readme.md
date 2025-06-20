@@ -1,4 +1,4 @@
-Algorithms implemented in Java 8. 
+Algorithms implemented in Java
 
 Includes Searching, Sorting algorithms. Data Structures
 
