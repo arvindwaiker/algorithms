@@ -2,21 +2,21 @@ package io.awklabs.datastructures.tree.rbtree;
 
 public class Node<T> {
 
-    T element;
+  T element;
 
-    Node<T> left;
+  Node<T> left;
 
-    Node<T> right;
+  Node<T> right;
 
-    Colour colour;
+  Colour colour;
 
-    public Node(T element) {
-        this.element = element;
-        this.colour = Colour.RED;
-    }
+  public Node(T element) {
+    this.element = element;
+    this.colour = Colour.RED;
+  }
 
-    @Override
-    public String toString() {
-        return element + "(" + colour + ")";
-    }
+  @Override
+  public String toString() {
+    return element + " (" + colour + ")";
+  }
 }

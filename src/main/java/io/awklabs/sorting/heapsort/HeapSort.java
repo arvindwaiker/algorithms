@@ -1,103 +1,92 @@
 package io.awklabs.sorting.heapsort;
 
-import io.awklabs.sorting.Sort;
-
 import java.util.Comparator;
+
+import io.awklabs.sorting.Sort;
 
 public class HeapSort<T> implements Sort<T> {
 
-    @Override
-    public void sort(int[] array) {
+  @Override
+  public void sort(int[] array) {
 
-        assert array != null;
+    assert array != null;
 
-        int n = array.length;
+    int n = array.length;
 
-        if (n <= 1) {
-            return;
-        }
-
-        for (int i = (n / 2) - 1; i >= 0; i--)
-            heapify(array, n, i);
-
-
-        for (int i = n - 1; i >= 0; i--) {
-            int temp = array[0];
-            array[0] = array[i];
-            array[i] = temp;
-
-            heapify(array, i, 0);
-        }
-
+    if (n <= 1) {
+      return;
     }
 
-    private void heapify(int[] array, int n, int i) {
+    for (int i = (n / 2) - 1; i >= 0; i--) heapify(array, n, i);
 
-        int largest = i;
-        int l = (2 * i) + 1;
-        int r = (2 * i) + 2;
+    for (int i = n - 1; i >= 0; i--) {
+      int temp = array[0];
+      array[0] = array[i];
+      array[i] = temp;
 
-        if (l < n && array[l] > array[largest])
-            largest = l;
+      heapify(array, i, 0);
+    }
+  }
 
-        if (r < n && array[r] > array[largest])
-            largest = r;
+  private void heapify(int[] array, int n, int i) {
 
-        if (largest != i) {
+    int largest = i;
+    int l = (2 * i) + 1;
+    int r = (2 * i) + 2;
 
-            int temp = array[largest];
-            array[largest] = array[i];
-            array[i] = temp;
+    if (l < n && array[l] > array[largest]) largest = l;
 
-            heapify(array, n, largest);
-        }
+    if (r < n && array[r] > array[largest]) largest = r;
 
+    if (largest != i) {
+
+      int temp = array[largest];
+      array[largest] = array[i];
+      array[i] = temp;
+
+      heapify(array, n, largest);
+    }
+  }
+
+  @Override
+  public void sort(T[] array, Comparator<? super T> c) {
+
+    assert array != null && c != null;
+
+    int n = array.length;
+
+    if (n <= 1) return;
+
+    for (int i = (n / 2) - 1; i >= 0; i--) {
+      heapify(array, n, i, c);
     }
 
-    @Override
-    public void sort(T[] array, Comparator<? super T> c) {
+    for (int i = n - 1; i >= 0; i--) {
 
-        assert array != null && c != null;
+      T temp = array[0];
+      array[0] = array[i];
+      array[i] = temp;
 
-        int n = array.length;
-
-        if (n <= 1)
-            return;
-
-        for (int i = (n / 2) - 1; i >= 0; i--) {
-            heapify(array, n, i, c);
-        }
-
-        for (int i = n - 1; i >= 0; i--) {
-
-            T temp = array[0];
-            array[0] = array[i];
-            array[i] = temp;
-
-            heapify(array, i, 0, c);
-
-        }
-
+      heapify(array, i, 0, c);
     }
+  }
 
-    private void heapify(T[] array, int n, int i, Comparator<? super T> c) {
+  private void heapify(T[] array, int n, int i, Comparator<? super T> c) {
 
-        int largest = i;
-        int l = (2 * i) + 1;
-        int r = (2 * i) + 2;
+    int largest = i;
+    int l = (2 * i) + 1;
+    int r = (2 * i) + 2;
 
-        if (l < n && c.compare(array[l], array[largest]) > 0)
-            largest = l;
+    if (l < n && c.compare(array[l], array[largest]) > 0) largest = l;
 
-        if (r < n && c.compare(array[r], array[largest]) > 0)
-            largest = r;
+    if (r < n && c.compare(array[r], array[largest]) > 0) largest = r;
 
-        if (largest != i) {
-            T temp = array[largest];
-            array[largest] = array[i];
-            array[i] = temp;
+    if (largest != i) {
+      T temp = array[largest];
+      array[largest] = array[i];
+      array[i] = temp;
 
-            heapify(array, n, largest, c);
-        }
+      heapify(array, n, largest, c);
     }
+  }
 }

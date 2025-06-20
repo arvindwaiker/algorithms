@@ -6,155 +6,152 @@ import java.util.List;
 
 public class BinarySearchTree<T> {
 
-    protected Comparator<? super T> comparator;
+  protected Comparator<? super T> comparator;
 
-    public BinarySearchTree(Comparator<? super T> comparator) {
-        this.comparator = comparator;
+  public BinarySearchTree(Comparator<? super T> comparator) {
+    this.comparator = comparator;
+  }
+
+  public Node<T> insert(Node<T> root, T element) {
+    assert element != null;
+
+    if (root == null) {
+      return new Node<>(element);
     }
 
-    public Node<T> insert(Node<T> root, T element) {
-        assert element != null;
+    if (comparator.compare(root.element, element) > 0) {
+      root.left = insert(root.left, element);
+    } else if (comparator.compare(root.element, element) < 0) {
+      root.right = insert(root.right, element);
+    }
+    return root;
+  }
 
-        if (root == null) {
-            return new Node<>(element);
-        }
+  public Node<T> search(Node<T> root, T element) {
+    assert element != null;
 
-        if (comparator.compare(root.element, element) > 0) {
-            root.left = insert(root.left, element);
-        } else if (comparator.compare(root.element, element) < 0) {
-            root.right = insert(root.right, element);
-        }
-        return root;
+    if (root == null || comparator.compare(root.element, element) == 0) {
+      return root;
     }
 
-    public Node<T> search(Node<T> root, T element) {
-        assert element != null;
+    if (comparator.compare(root.element, element) > 0) {
+      return search(root.left, element);
+    } else {
+      return search(root.right, element);
+    }
+  }
 
-        if (root == null || comparator.compare(root.element, element) == 0) {
-            return root;
-        }
+  public Node<T> delete(Node<T> root, T element) {
 
-        if (comparator.compare(root.element, element) > 0) {
-            return search(root.left, element);
-        } else {
-            return search(root.right, element);
-        }
+    if (root == null) {
+      return root;
     }
 
-    public Node<T> delete(Node<T> root, T element) {
+    if (comparator.compare(root.element, element) > 0) {
+      root.left = delete(root.left, element);
+    } else if (comparator.compare(root.element, element) < 0) {
+      root.right = delete(root.right, element);
+    } else {
+      if (root.left == null) {
+        return root.right;
+      } else if (root.right == null) {
+        return root.left;
+      }
 
-        if (root == null) {
-            return root;
-        }
-
-        if (comparator.compare(root.element, element) > 0) {
-            root.left = delete(root.left, element);
-        } else if (comparator.compare(root.element, element) < 0) {
-            root.right = delete(root.right, element);
-        } else {
-            if (root.left == null) {
-                return root.right;
-            } else if (root.right == null) {
-                return root.left;
-            }
-
-            //Do not actually delete the node. Instead replace it with min value. Delete the min value node in the right sub tree.
-            root.element = minValue(root.right);
-            root.right = delete(root.right, root.element);
-        }
-
-        return root;
-
+      // Do not actually delete the node. Instead replace it with min value. Delete the min value
+      // node in the right sub tree.
+      root.element = minValue(root.right);
+      root.right = delete(root.right, root.element);
     }
 
-    private T minValue(Node<T> root) {
-        T minValue = root.element;
-        while (root.left != null) {
-            minValue = root.left.element;
-            root = root.left;
-        }
-        return minValue;
+    return root;
+  }
+
+  private T minValue(Node<T> root) {
+    T minValue = root.element;
+    while (root.left != null) {
+      minValue = root.left.element;
+      root = root.left;
+    }
+    return minValue;
+  }
+
+  public void inOrder(Node<T> node, List<T> resultArray) {
+
+    if (node == null) {
+      return;
     }
 
-    public void inOrder(Node<T> node, List<T> resultArray) {
+    inOrder(node.left, resultArray);
+    resultArray.add(node.element);
+    inOrder(node.right, resultArray);
+  }
 
-        if (node == null) {
-            return;
-        }
+  public void preOrder(Node<T> node, List<T> resultArray) {
 
-        inOrder(node.left, resultArray);
-        resultArray.add(node.element);
-        inOrder(node.right, resultArray);
+    if (node == null) {
+      return;
     }
 
-    public void preOrder(Node<T> node, List<T> resultArray) {
+    resultArray.add(node.element);
+    preOrder(node.left, resultArray);
+    preOrder(node.right, resultArray);
+  }
 
-        if (node == null) {
-            return;
-        }
+  public void postOrder(Node<T> node, List<T> resultArray) {
 
-        resultArray.add(node.element);
-        preOrder(node.left, resultArray);
-        preOrder(node.right, resultArray);
+    if (node == null) {
+      return;
     }
 
-    public void postOrder(Node<T> node, List<T> resultArray) {
+    postOrder(node.left, resultArray);
+    postOrder(node.right, resultArray);
+    resultArray.add(node.element);
+  }
 
-        if (node == null) {
-            return;
-        }
+  public Node<T> balance(Node<T> node) {
 
-        postOrder(node.left, resultArray);
-        postOrder(node.right, resultArray);
-        resultArray.add(node.element);
+    if (node == null || (node.left == null && node.right == null)) {
+      return node;
     }
 
-    public Node<T> balance(Node<T> node) {
+    List<T> result = new ArrayList<>();
 
-        if (node == null || (node.left == null && node.right == null)) {
-            return node;
-        }
+    inOrder(node, result);
 
-        List<T> result = new ArrayList<>();
+    return insert((T[]) result.toArray(), 0, result.size() - 1, null);
+  }
 
-        inOrder(node, result);
+  private Node<T> insert(T[] array, int low, int high, Node<T> root) {
 
-        return insert((T[]) result.toArray(), 0, result.size() - 1, null);
-
+    if (low == high) {
+      root = insert(root, array[low]);
+      return root;
+    } else if (low > high) {
+      return root;
     }
 
-    private Node<T> insert(T[] array, int low, int high, Node<T> root) {
+    int mid = (low + high) / 2;
+    root = insert(root, array[mid]);
+    root.left = insert(array, low, mid - 1, root.left);
+    root.right = insert(array, mid + 1, high, root.right);
 
-        if (low == high) {
-            root = insert(root, array[low]);
-            return root;
-        } else if (low > high) {
-            return root;
-        }
+    return root;
+  }
 
-        int mid = (low + high) / 2;
-        root = insert(root, array[mid]);
-        root.left = insert(array, low, mid - 1, root.left);
-        root.right = insert(array, mid + 1, high, root.right);
+  public int height(Node<T> root) {
 
-        return root;
+    if (root == null) {
+      return 0;
+    } else {
+
+      int l = height(root.left);
+      int r = height(root.right);
+      if (l > r) {
+        return l + 1;
+      } else {
+        return r + 1;
+      }
     }
-
-    public int height(Node<T> root) {
-
-        if (root == null) {
-            return 0;
-        } else {
-
-            int l = height(root.left);
-            int r = height(root.right);
-            if (l > r) {
-                return l + 1;
-            } else {
-                return r + 1;
-            }
-        }
-    }
-
-
+  }
 }

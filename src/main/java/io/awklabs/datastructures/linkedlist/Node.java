@@ -2,15 +2,15 @@ package io.awklabs.datastructures.linkedlist;
 
 public class Node<T> {
 
-    T element;
+  T element;
 
-    Node<T> next;
+  Node<T> next;
 
-    Node<T> previous;
+  Node<T> previous;
 
-    public Node(T element) {
-        this.element = element;
-        this.next = null;
-        this.previous = null;
-    }
+  public Node(T element) {
+    this.element = element;
+    this.next = null;
+    this.previous = null;
+  }
 }

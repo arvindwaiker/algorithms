@@ -1,37 +1,42 @@
 package io.awklabs.sorting.radixsort;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import io.awklabs.sorting.SortingAlgorithmTestBase;
-import org.junit.Test;
 
 public class RadixSortTest extends SortingAlgorithmTestBase {
 
-    @Override
-    public void before() {
-        super.before();
-        sort = factory.getRadixSort();
-    }
+  @Override
+  @BeforeEach
+  public void before() {
+    super.before();
+    sort = factory.getRadixSort();
+  }
 
-    @Override
-    @Test(expected = RuntimeException.class)
-    public void testStringSort() {
-        super.testStringSort();
-    }
+  @Override
+  @Test
+  public void testStringSort() {
+    assertThrows(RuntimeException.class, super::testStringSort);
+  }
 
-    @Override
-    @Test(expected = RuntimeException.class)
-    public void testEmptyStringArray() {
-        super.testEmptyStringArray();
-    }
+  @Override
+  @Test
+  public void testEmptyStringArray() {
+    assertThrows(RuntimeException.class, super::testEmptyStringArray);
+  }
 
-    @Override
-    @Test(expected = RuntimeException.class)
-    public void testNullComparator() {
-        super.testNullComparator();
-    }
+  @Override
+  @Test
+  public void testNullComparator() {
+    assertThrows(RuntimeException.class, () -> sort.sort(new String[] {}, null));
+  }
 
-    @Override
-    @Test(expected = RuntimeException.class)
-    public void testNullArray() {
-        super.testNullArray();
-    }
+  @Override
+  @Test
+  public void testNullArray() {
+    assertThrows(RuntimeException.class, () -> sort.sort(null, String::compareTo));
+  }
 }
